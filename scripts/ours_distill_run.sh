@@ -1,0 +1,1 @@
+python ours_distill_main.py --s_model_name efficientnet_b0 --t_model_name vit_b_16 --train --margin 0.5 --alpha 0.8 --revise_distance --false_pos --cluster_num 10 --encode_length 64 --device 6 --trail 1 --cuda --epochs 400

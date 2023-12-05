@@ -1,0 +1,1 @@
+python main.py cifar vit_b_16 --train --dataset cifar10 --encode_length 64 --cuda --device 4 --trail 1 --epochs 200 --lr 0.0005 --num_bad_epochs 3
