@@ -1,6 +1,6 @@
 # BRCD
 
-A Pytorch implementation an under reviewed paper
+The code for an under reviewed paper
 
 # Main Dependencies
 

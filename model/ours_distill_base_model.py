@@ -229,17 +229,17 @@ class Base_Model(nn.Module):
         parser.add_argument('--s_model_name', type=str, default='please_choose_a_model')
         parser.add_argument('--a_model_name', type=str, default='please_choose_a_model')
         parser.add_argument('--t_model_name', type=str, default='please_choose_a_model')
-        parser.add_argument('--false_neg', action='store_true', help='是否加入false negtives的选择')
-        parser.add_argument('--revise_distance', action='store_true', help='是否重定义距离')
-        parser.add_argument('--false_pos', action='store_true', help='是否加入false positive的选择')
-        parser.add_argument('--alpha', type=float, default=0.5, help='论文中的alpha参数')
+        parser.add_argument('--false_neg', action='store_true')
+        parser.add_argument('--revise_distance', action='store_true')
+        parser.add_argument('--false_pos', action='store_true')
+        parser.add_argument('--alpha', type=float, default=0.5)
         parser.add_argument('--margin', type=float, default=0.1)
         parser.add_argument('--cluster_num', type=int, default=7)
 
         parser.add_argument('--train', action='store_true',
                             help='train a model?')
         parser.add_argument('--trail', default = 1, type=int)
-        parser.add_argument('--ta_trail', default = 1, type=int, help='设置assistant的trail')
+        parser.add_argument('--ta_trail', default = 1, type=int)
         parser.add_argument('-d', '--dataset', default = 'cifar10', type=str,
                             help='dataset [%(default)s]')
         parser.add_argument("-l","--encode_length", type = int, default=16,

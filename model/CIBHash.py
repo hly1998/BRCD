@@ -11,22 +11,9 @@ class CIBHash(Base_Model):
         super().__init__(hparams=hparams)
 
     def define_parameters(self):
-        # self.vgg = torchvision.models.vgg16(pretrained=True)
-        # self.vgg.classifier = nn.Sequential(*list(self.vgg.classifier.children())[:6])
-        # for param in self.vgg.parameters():
-        #     param.requires_grad = False
-        # self.encoder = nn.Sequential(nn.Linear(4096, 1024),
-        #                                nn.ReLU(),
-        #                                nn.Linear(1024, self.hparams.encode_length),
-        #                               )
-
-        # teacher model list
         if self.hparams.model_name == 'vit_b_16':
             self.net = torchvision.models.vit_b_16(pretrained=True)
             self.net.heads = nn.Linear(768, self.hparams.encode_length)
-            # self.net = nn.Sequential(*list(self.net.children())[:-1])
-            # print(self.net)
-            # exit()
         if self.hparams.model_name == 'vit_b_32':
             self.net = torchvision.models.vit_b_32(pretrained=True)
         if self.hparams.model_name == 'vit_h_14':

@@ -30,9 +30,7 @@ class Base_Model(nn.Module):
         raise NotImplementedError
 
     def run_training_sessions(self):
-        # logger = Logger('./logs/' + self.hparams.data_name + '.log', on=True)
         logging.basicConfig(filename='./logs/' + self.hparams.data_name + '_' + str(self.hparams.trail) + '.log', level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        # print('./logs/' + self.hparams.data_name + '.log')
         val_perfs = []
         best_val_perf = float('-inf')
         start = timer()
@@ -43,7 +41,6 @@ class Base_Model(nn.Module):
         logging.info('Time: %s' % str(timedelta(seconds=round(timer() - start))))
         self.load()
         if self.hparams.num_runs > 1:
-            # logging.info_perfs(val_perfs)
             logging.info('best hparams: ' + self.flag_hparams())
         
         val_perf, test_perf = self.run_test()
@@ -52,8 +49,6 @@ class Base_Model(nn.Module):
     
     def run_training_session(self, run_num):
         self.train()
-        
-        # Scramble hyperparameters if number of runs is greater than 1.
         if self.hparams.num_runs > 1:
             logging.info('RANDOM RUN: %d/%d' % (run_num, self.hparams.num_runs))
             for hparam, values in self.get_hparams_grid().items():
@@ -64,8 +59,6 @@ class Base_Model(nn.Module):
         torch.manual_seed(self.hparams.seed)
 
         self.define_parameters()
-
-        # if encode_length is 16, then al least 80 epochs!
         if self.hparams.encode_length == 16:
             self.hparams.epochs = max(80, self.hparams.epochs)
 

@@ -1,4 +1,3 @@
-# 2023.3.6 更新，我们的模型，见 ours_distill_base_model
 import torch
 import argparse
 import torchvision
@@ -18,7 +17,7 @@ class CIBHash(Base_Model):
         self.mask_matrix = torch.from_numpy(mask_matrix)
         ind2cluster = []
         with open('./get_mask/files/kmeans_{}_{}_{}.txt'.format(self.hparams.dataset, self.hparams.cluster_num, self.hparams.encode_length) ,'r') as f:
-            line = f.readline()               # 调用文件的 readline()方法 
+            line = f.readline()
             while line: 
                 l = int(line.split(',')[1])
                 ind2cluster.append(l)
@@ -170,7 +169,6 @@ class CIBHash(Base_Model):
             t_matrix = torch.where(t_matrix > 0, one, t_matrix)
             t_matrix = 1 - t_matrix
             fn_matrix = t_matrix * (-1000)
-            # 获取alpha_vec
             d_ij = torch.diag(ij_matrix)
             for idx, c in enumerate(d_ij):
                 if c != 0:
@@ -225,9 +223,9 @@ class CIBHash(Base_Model):
                             help = "Temperature [%(default)d]",)
         parser.add_argument('-w',"--weight", default = 0.001, type=float,
                             help='weight of I(x,z) [%(default)f]')
-        parser.add_argument("--l2_weight", default = 1, type=float, help='l2部分权重')
-        parser.add_argument("--l1_weight", default = 1, type=float, help='l1部分权重')
-        parser.add_argument("--kl_distill_weight", default = 1, type=float, help='kl部分权重')
+        parser.add_argument("--l2_weight", default = 1, type=float)
+        parser.add_argument("--l1_weight", default = 1, type=float)
+        parser.add_argument("--kl_distill_weight", default = 1, type=float)
         return parser
 
 

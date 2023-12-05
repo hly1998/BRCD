@@ -249,7 +249,6 @@ class Base_Model(nn.Module):
         return val_perf, test_perf, distill_val_perf, distill_test_perf
     
     def run_get_student_and_teacher_out(self):
-        # 获取学生模型、教师模型的输出
         device = torch.device('cuda' if self.hparams.cuda else 'cpu')
         train_loader, val_loader, test_loader, database_loader = self.data.get_loaders(
             self.hparams.batch_size, self.hparams.num_workers,

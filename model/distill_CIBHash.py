@@ -174,9 +174,9 @@ class CIBHash(Base_Model):
                             help = "Temperature [%(default)d]",)
         parser.add_argument('-w',"--weight", default = 0.001, type=float,
                             help='weight of I(x,z) [%(default)f]')
-        parser.add_argument("--l2_weight", default = 1, type=float, help='l2部分权重')
-        parser.add_argument("--l1_weight", default = 1, type=float, help='l1部分权重')
-        parser.add_argument("--kl_distill_weight", default = 1, type=float, help='kl部分权重')
+        parser.add_argument("--l2_weight", default = 1, type=float)
+        parser.add_argument("--l1_weight", default = 1, type=float)
+        parser.add_argument("--kl_distill_weight", default = 1, type=float)
         return parser
 
 
