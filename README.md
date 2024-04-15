@@ -1,6 +1,6 @@
 # BRCD
 
-The code for an under reviewed paper
+A Pytorch implementation of paper Bit-mask Robust Contrastive Knowledge Distillation for Unsupervised Semantic Hashing (WWW2024) 
 
 # Main Dependencies
 
